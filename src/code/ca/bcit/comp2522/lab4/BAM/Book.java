@@ -4,10 +4,9 @@ package ca.bcit.comp2522.lab4.BAM;
  * Class represents a book and its information (title, year
  * published and author).
  *
- * @Implements Comparable, Printable, Reversible
- *
  * @author Ben, Andre, Marcus
  * @version 1.0
+ * @Implements Comparable, Printable, Reversible
  */
 public class Book
         implements Comparable<Book>, Printable, Reversible {
@@ -68,7 +67,7 @@ public class Book
         final String reverse;
 
         reverseBuilder = new StringBuilder();
-        for(int i = 0; i < title.length(); i++) {
+        for (int i = 0; i < title.length(); i++) {
             reverseBuilder.append(title.charAt(i));
         }
 
@@ -84,11 +83,15 @@ public class Book
      *
      * @param book book to be compared.
      * @return return > 0 if the Book argument is newer than this object (year published),
-     *         return = 0 if both objects were published on the same year
-     *         return < 0 if the Book argument is older than this object
+     * return = 0 if both objects were published on the same year
+     * return < 0 if the Book argument is older than this object
      */
     @Override
     public int compareTo(final Book book) {
+        if (book == null) {
+            throw new NullPointerException("Cannot access a null book.");
+        }
+
         return book.yearPublished - this.yearPublished;
     }
 
