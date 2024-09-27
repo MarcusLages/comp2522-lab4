@@ -1,7 +1,14 @@
 package ca.bcit.comp2522.lab4.BAM;
 
-import java.util.Currency;
-
+/**
+ * Class represents a book and its information (title, year
+ * published and author).
+ *
+ * @Implements Comparable, Printable, Reversible
+ *
+ * @author Ben, Andre, Marcus
+ * @version 1.0
+ */
 public class Book
         implements Comparable<Book>, Printable, Reversible {
 
@@ -13,6 +20,13 @@ public class Book
     private final int yearPublished;
     private final Author author;
 
+    /**
+     * Creates a Book object based on given information.
+     *
+     * @param title         title of the book
+     * @param yearPublished year the book was published
+     * @param author        author of the book
+     */
     public Book(final String title, final int yearPublished, final Author author) {
         validateTitle(title);
         validateYrPublished(yearPublished);
@@ -23,16 +37,21 @@ public class Book
         this.author = author;
     }
 
+    /**
+     * Displays information about the book on the console
+     * (title, year published and author).
+     */
     @Override
     public void display() {
         final StringBuilder infoBuilder;
         final String info;
 
         infoBuilder = new StringBuilder();
-        infoBuilder.append(title)
-                .append("(")
+        infoBuilder.append("Title: ")
+                .append(title)
+                .append("\nYear Published: ")
                 .append(yearPublished)
-                .append(") by ")
+                .append("\nAuthor: ")
                 .append(author);
 
         info = infoBuilder.toString();
@@ -40,6 +59,9 @@ public class Book
         System.out.println(info);
     }
 
+    /**
+     * Displays information about the name of the book backwards (reversed).
+     */
     @Override
     public void backward() {
         final StringBuilder reverseBuilder;
@@ -55,11 +77,22 @@ public class Book
         System.out.println(reverse);
     }
 
+    /**
+     * Compares if a book is older than the given book.
+     * If yes, return > 0. If equal, return == 0.
+     * If not, return < 0
+     *
+     * @param book book to be compared.
+     * @return return > 0 if the Book argument is newer than this object (year published),
+     *         return = 0 if both objects were published on the same year
+     *         return < 0 if the Book argument is older than this object
+     */
     @Override
     public int compareTo(final Book book) {
         return book.yearPublished - this.yearPublished;
     }
 
+    // Validates title to not be null, empty or blank and to have less than MAX_TITLE_SIZE characters
     private static void validateTitle(final String title) {
         if (title == null) {
             throw new IllegalArgumentException("Null book title not accepted.");
@@ -71,6 +104,7 @@ public class Book
         }
     }
 
+    // Validates year published so its between FIRST_YEAR and CURRENT_YEAR
     private static void validateYrPublished(final int yearPublished) {
         if (yearPublished < FIRST_YEAR || yearPublished > CURRENT_YEAR) {
             throw new IllegalArgumentException("Year not accepted. Must be between " + FIRST_YEAR +
@@ -79,6 +113,7 @@ public class Book
         }
     }
 
+    // Validates author to be not be null
     private static void validateAuthor(final Author author) {
         if (author == null) {
             throw new IllegalArgumentException("Null author not accepted.");
