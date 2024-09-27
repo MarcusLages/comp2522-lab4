@@ -19,7 +19,7 @@ public class Autobiography extends Biography {
     public Autobiography(final String title,
                          final int yearPublished,
                          final Author author) {
-        super(title, yearPublished, author, author.person);
+        super(title, yearPublished, author, author);
     }
 
 }

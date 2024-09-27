@@ -1,5 +1,7 @@
 package ca.bcit.comp2522.lab4.BAM;
 
+import java.util.Objects;
+
 /**
  * Class represents a Biography and its information (title, year
  * published, author and subject).
@@ -86,7 +88,7 @@ public class Biography extends Book {
      */
     @Override
     public int hashCode() {
-        return Objects.hashCode(subject.name);
+        return Objects.hash(subject.name.first, subject.name.last);
     }
 
     // Validates the subject to not be null
