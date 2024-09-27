@@ -1,16 +1,62 @@
 package ca.bcit.comp2522.lab4.BAM;
 
+/**
+ * Class represents a Biography and its information (title, year
+ * published, author and subject).
+ *
+ * @Implements Comparable, Printable, Reversible
+ *
+ * @author Ben, Andre, Marcus
+ * @version 1.0
+ */
 public class Biography extends Book {
 
     public final Person subject;
 
-    public Biography(final String title, final int yearPublished, final Author author, final Person subject) {
+    /**
+     * Creates a Biography object based on the given information.
+     *
+     * @param title         title of the biography
+     * @param yearPublished year the biography was published
+     * @param author        author of the biography
+     * @param subject       subject of the biography
+     */
+    public Biography(final String title,
+                     final int yearPublished,
+                     final Author author,
+                     final Person subject) {
         super(title, yearPublished, author);
         validateSubject(subject);
 
         this.subject = subject;
     }
 
+    /**
+     * Displays information about the biography on the console
+     * (title, year published, author and biography).
+     */
+    @Override
+    public void display() {
+        final StringBuilder infoBuilder;
+        final String info;
+
+        infoBuilder = new StringBuilder();
+        infoBuilder.append("Subject: ")
+                .append(subject);
+        info = infoBuilder.toString();
+
+        super.display();
+        System.out.println(info);
+    }
+
+    /**
+     * Checks and returns true (declared the same) if a given Biography
+     * object has the same subject as this object.
+     *
+     * @param obj   object to be compared
+     * @return true if object is a Biography object and has the same subject
+     *         as this object
+     */
     @Override
     public boolean equals(final Object obj) {
         if(obj == null) {
@@ -32,11 +78,18 @@ public class Biography extends Book {
         return equal;
     }
 
+    /**
+     * Function to return an unique hash code based on the name
+     * of the subject.
+     *
+     * @return object's unique hash code
+     */
     @Override
     public int hashCode() {
         return Objects.hashCode(subject.name);
     }
 
+    // Validates the subject to not be null
     private static void validateSubject(final Person subject) {
         if (subject == null) {
             throw new IllegalArgumentException("Null biography subject is not valid.");
