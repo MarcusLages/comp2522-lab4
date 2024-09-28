@@ -15,7 +15,6 @@ public class Person implements Comparable<Person> {
     }
 
 
-
     @Override
     public int compareTo(final Person person){
         if (person == null){

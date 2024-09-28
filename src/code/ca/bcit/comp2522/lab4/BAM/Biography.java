@@ -80,6 +80,9 @@ public class Biography extends Book {
         return equal;
     }
 
+
+    // Andre
+    // It is "a unique" not "an unique". English is weird.
     /**
      * Function to return an unique hash code based on the name
      * of the subject.
