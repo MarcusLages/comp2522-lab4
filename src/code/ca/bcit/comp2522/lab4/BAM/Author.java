@@ -1,4 +1,4 @@
 package ca.bcit.comp2522.lab4.BAM;
 
-public class Author {
+public class Author extends Person{
 }
