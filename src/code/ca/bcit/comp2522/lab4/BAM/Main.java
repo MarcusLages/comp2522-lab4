@@ -16,11 +16,11 @@ public class Main{
             Person Hamilton = new Person(new Date(10,10,10), new Date(10,10,10),"Alexander Hamilton" );
             Person Einstein = new Person(new Date(10,10,10), new Date(10,10,10),"Albert Einstein" );
 
-            Person Frank = new Person(new Date(10,10,10), new Date(10,10,10),"Anne Frank" );
-            Person Mandela = new Person(new Date(10,10,10), new Date(10,10,10),"Nelson Mandela" );
-            Person Ghandi = new Person(new Date(10,10,10), new Date(10,10,10),"Mahatma Ghandi" );
-            Person Angelou = new Person(new Date(10,10,10), new Date(10,10,10),"Maya Angelou" );
-            Person X = new Person(new Date(10,10,10), new Date(10,10,10),"Malcolm X" );
+            Author Frank = new Author(new Date(10,10,10), new Date(10,10,10),"Anne Frank", "bruh" );
+            Author Mandela = new Author(new Date(10,10,10), new Date(10,10,10),"Nelson Mandela", "ham" );
+            Author Ghandi = new Author(new Date(10,10,10), new Date(10,10,10),"Mahatma Ghandi", "hamster" );
+            Author Angelou = new Author(new Date(10,10,10), new Date(10,10,10),"Maya Angelou", "kachow" );
+            Author X = new Author(new Date(10,10,10), new Date(10,10,10),"Malcolm X", "weeee" );
 
 
             // Create Book objects with a title, year published, and author
@@ -40,11 +40,11 @@ public class Main{
 
 
             // Create Five Autobiographies
-            Autobiography auto1 = new Autobiography("The Diary of a Young Girl", 1947, new Author(new Date(1929, 6, 12), new Date(1945, 3, 31), "Anne Frank", Frank)); // what da hell bruh what da hell
-            Autobiography auto2 = new Autobiography("Long Walk to Freedom", 1994, new Author(new Date(1918, 7, 18), new Date(2013, 12, 5), "Nelson Mandela", Mandela));
-            Autobiography auto3 = new Autobiography("The Story of My Experiments with Truth", 1927, new Author(new Date(1869, 10, 2), new Date(1948, 1, 30), "Mahatma Gandhi", Ghandi));
-            Autobiography auto4 = new Autobiography("I Know Why the Caged Bird Sings", 1969, new Author(new Date(1928, 4, 4), new Date(2014, 5, 28), "Maya Angelou", Angelou));
-            Autobiography auto5 = new Autobiography("Autobiography of Malcolm X", 1965, new Author(new Date(1925, 5, 19), new Date(1965, 2, 21), "Malcolm X", X));
+            Autobiography auto1 = new Autobiography("The Diary of a Young Girl", 1947, Frank); // what da hell bruh what da hell
+            Autobiography auto2 = new Autobiography("Long Walk to Freedom", 1994,Mandela);
+            Autobiography auto3 = new Autobiography("The Story of My Experiments with Truth", 1927,Ghandi);
+            Autobiography auto4 = new Autobiography("I Know Why the Caged Bird Sings", 1969, Angelou);
+            Autobiography auto5 = new Autobiography("Autobiography of Malcolm X", 1965, X);
 
             // Comparisons and Printing n shit
 
