@@ -1,6 +1,6 @@
 package ca.bcit.comp2522.lab4.BAM;
 
-public class Author extends Person{
+public class Author extends Person implements Printable{
     private static final int MAX_GENRE_LENGTH = 30;
 
     public final String genre;
