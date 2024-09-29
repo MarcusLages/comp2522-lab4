@@ -76,15 +76,12 @@ public class Biography extends Book {
         final Biography bioCompare;
         final boolean equal;
         bioCompare = (Biography) obj;
-        equal = (this.subject.equals(bioCompare));
+        equal = (this.subject.equals(bioCompare.subject));
         return equal;
     }
 
-
-    // Andre
-    // It is "a unique" not "an unique". English is weird.
     /**
-     * Function to return an unique hash code based on the name
+     * Function to return a unique hash code based on the name
      * of the subject.
      *
      * @return object's unique hash code
