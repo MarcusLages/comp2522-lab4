@@ -370,8 +370,11 @@ public class Date implements Printable{
 
     @Override
     public void display() {
-        StringBuilder str = new StringBuilder();
-        str.append("Year: ").append(this.year)
+        StringBuilder str;
+
+        str = new StringBuilder();
+        str.append("Year: ")
+                .append(this.year)
                 .append(", Month: ")
                 .append(this.month)
                 .append(", Day: ")
