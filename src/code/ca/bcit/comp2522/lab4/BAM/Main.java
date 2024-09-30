@@ -47,6 +47,29 @@ public class Main{
             Autobiography auto5 = new Autobiography("Autobiography of Malcolm X", 1965, X);
 
             // Comparisons and Printing n shit
+            // Compare books by publication year
+            System.out.println(book1.compareTo(book2));
+            System.out.println(book3.compareTo(book4));
+
+            // Compare authors by birthdate
+            System.out.println(orwell.compareTo(lee));
+            System.out.println(austen.compareTo(melville));
+
+            // Compare biographies by subjects
+            System.out.println(bio1.equals(bio2));
+            System.out.println(bio4.equals(bio5));
+
+            // Use Printable interface to display information
+            book1.display();
+            bio1.display();
+            auto1.display();
+
+            // Use Reversible interface to print names and titles backward
+            book1.backward();
+            bio1.backward();
+            auto1.backward();
+
+
 
         }
     }
