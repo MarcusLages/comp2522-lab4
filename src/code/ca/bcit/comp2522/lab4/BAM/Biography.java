@@ -44,7 +44,7 @@ public class Biography extends Book {
 
         infoBuilder = new StringBuilder();
         infoBuilder.append("Subject: ")
-                .append(subject);
+                .append(subject.getName());
         info = infoBuilder.toString();
 
         super.display();

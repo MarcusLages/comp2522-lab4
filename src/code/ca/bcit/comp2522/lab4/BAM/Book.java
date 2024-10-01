@@ -53,7 +53,7 @@ public class Book
                 .append("\nYear Published: ")
                 .append(yearPublished)
                 .append("\nAuthor: ")
-                .append(author);
+                .append(author.getName());
 
         info = infoBuilder.toString();
 
