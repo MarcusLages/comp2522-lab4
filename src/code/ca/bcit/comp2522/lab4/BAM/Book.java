@@ -102,7 +102,7 @@ public class Book
             throw new IllegalArgumentException("Null book title not accepted.");
         } else if (title.isBlank() || title.isEmpty()) {
             throw new IllegalArgumentException("Blank or empty title not accepted.");
-        } else if (title.length() < MAX_TITLE_SIZE) {
+        } else if (title.length() > MAX_TITLE_SIZE) {
             throw new IllegalArgumentException("Title is bigger than the max size of " + MAX_TITLE_SIZE +
                     ". Title given: " + title);
         }
