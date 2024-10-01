@@ -14,6 +14,7 @@ public class Book
     private static final int MAX_TITLE_SIZE = 100;
     private static final int FIRST_YEAR = 1;
     private static final int CURRENT_YEAR = 2024;
+    private static final int STRING_BEGINNING = 0;
 
     private final String title;
     private final int yearPublished;
@@ -61,16 +62,13 @@ public class Book
     /**
      * Displays information about the name of the book backwards (reversed).
      */
-
-    //Andre Dizon:
-    //MAGIC NUMBER ┌∩┐(◣_◢)┌∩┐
     @Override
     public void backward() {
         final StringBuilder reverseBuilder;
         final String reverse;
 
         reverseBuilder = new StringBuilder();
-        for (int i = 0; i < title.length(); i++) {
+        for (int i = STRING_BEGINNING; i < title.length(); i++) {
             reverseBuilder.append(title.charAt(i));
         }
 
@@ -92,7 +90,7 @@ public class Book
     @Override
     public int compareTo(final Book book) {
         if (book == null) {
-            throw new NullPointerException("Cannot access a null book.");
+            throw new IllegalArgumentException("Cannot access a null book.");
         }
 
         return book.yearPublished - this.yearPublished;

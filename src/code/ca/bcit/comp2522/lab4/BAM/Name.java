@@ -35,7 +35,9 @@ public class Name implements Printable {
 
     @Override
     public void display() {
-        StringBuilder str = new StringBuilder();
+        StringBuilder str;
+
+        str = new StringBuilder();
         str.append("First name: ")
                 .append(first)
                 .append("Last name: ")
