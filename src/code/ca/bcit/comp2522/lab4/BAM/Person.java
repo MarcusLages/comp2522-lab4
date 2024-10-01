@@ -1,98 +1,113 @@
 package ca.bcit.comp2522.lab4.BAM;
 
-public class Person implements Comparable<Person> {
+/**
+ * Represents a person with a name, date of birth, and date of death.
+ * Implements Comparable for comparing birth dates and Printable for display functionality.
+ * Implements Reversible for reversing the name.
+ *
+ * @author Ben, Andre, Marcus
+ * @version 1.0
+ */
+public class Person implements Comparable<Person>, Printable, Reversible {
+    private static final int MIN_LENGTH = 0;
+
     public final Date dateOfBirth;
     public final Date dateOfDeath;
+    public final Name name;
 
-    // Marcus:
-    // - Name is of type Name, not String
-    public final String name;
+    /**
+     * Constructs a Person object with the specified date of birth, date of death, and name.
+     *
+     * @param dateOfBirth the date of birth of the person
+     * @param dateOfDeath the date of death of the person
+     * @param name the name of the person
+     * @throws IllegalArgumentException if dateOfBirth or name is null
+     */
+    public Person(final Date dateOfBirth, final Date dateOfDeath, final Name name) {
+        validateDateOfBirth(dateOfBirth);
+        validateName(name);
 
-    // Marcus:
-    // - MOTHERFUCKER FORGOT TO PUT FINAL ONCE AGAIN. YOU ARE DEAD THE NEXT TIME I SEE U.
-    public Person(Date dateOfBirth, Date dateOfDeath, String name) {
-        validatedateOfBirth(dateOfBirth);
-        validatename(name);
-
+        this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.dateOfDeath = dateOfDeath;
-        this.name = name;
-
     }
 
-
+    /**
+     * Compares this person with another person based on their date of birth.
+     *
+     * @param person the person to compare with
+     * @return a negative integer, zero, or a positive integer as this person
+     *         is older than, the same age as, or younger than the specified person
+     * @throws IllegalArgumentException if the specified person is null
+     */
     @Override
-    public int compareTo(final Person person){
-        if (person == null){
-            // Marcus:
-            // - This is not actually a NullPointerException, it should be IllegalArgumentException.
-            //   NullPointerException is only for when you are trying to access a variable or method
-            //   from a null variable. In this case, you are just not accepting null as argument.
-            //   It doesn't sound that bad, but giving the wrong Exception to a programmer can
-            //   make the code harder to debug.
-            throw new NullPointerException("Person cannot be null");
+    public int compareTo(final Person person) {
+        if (person == null) {
+            throw new IllegalArgumentException("Person cannot be null");
         }
 
-        // Marcus:
-        // - Dude, you didn't even add an age variable.
-        return person.age - this.age;
-    }
-
-    @Override
-    public void display(){
-        final StringBuilder personBuilder;
-        final String personBuilt;
-
-        personBuilder = new StringBuilder();
-
-        // Marcus:
-        // - You are getting the String value of the StringBuilder before
-        //   it's even built. This will return a blank space. Use the toString
-        //   after you have built the whole String.
-        personBuilt = personBuilder.toString();
-
-        // Marcus:
-        // Use append or +, not both (preferably append).
-        personBuilder.append("Name: " + name +
-                "\nDate of Birth: " + dateOfBirth +
-                "\nDate of Death: " + dateOfDeath + "\n");
-
-        System.out.println(personBuilt);
-    }
-
-    @Override
-    public void backward(){
-        final StringBuilder reverseBuilder;
-        final String reverseBuilt;
-
-        reverseBuilder = new StringBuilder();
-
-        // Marcus:
-        // - You are getting the String value of the StringBuilder before
-        //   it's even built. This will return a blank space. Use the toString
-        //   after you have built the whole String.
-        reverseBuilt = reverseBuilder.toString();
-
-        // Marcus:
-        // - Is it just me or do I see a magic number here? 😠
-        for (int i = 0; i < name.length(); i++) {
-            reverseBuilder.append(name.charAt(i));
+        if (this.dateOfBirth.getYear() != person.dateOfBirth.getYear()) {
+            return Integer.compare(this.dateOfBirth.getYear(), person.dateOfBirth.getYear());
         }
 
-        System.out.println(reverseBuilt);
+        if (this.dateOfBirth.getMonth() != person.dateOfBirth.getMonth()) {
+            return Integer.compare(this.dateOfBirth.getMonth(), person.dateOfBirth.getMonth());
+        }
+
+        return Integer.compare(this.dateOfBirth.getDay(), person.dateOfBirth.getDay());
     }
 
-    // Marcus:
-    // - Follow the naming conventions for methods. Use lowercaseCamelCase
-    private static void validatedateOfBirth(Date dateOfBirth) {
+    /**
+     * Displays the details of the person including name, date of birth, and date of death.
+     */
+    @Override
+    public void display() {
+        final StringBuilder personBuilder = new StringBuilder();
+
+        personBuilder.append("Name: ")
+                .append(this.name)
+                .append("\nDate of Birth: ")
+                .append(this.dateOfBirth)
+                .append("\nDate of Death: ")
+                .append(this.dateOfDeath)
+                .append("\n");
+
+        System.out.println(personBuilder.toString());
+    }
+
+    /**
+     * Reverses and prints the name of the person.
+     */
+    @Override
+    public void backward() {
+        final StringBuilder reverseBuilder = new StringBuilder();
+
+        for (int i = MIN_LENGTH; i < name.toString().length(); i++) {
+            reverseBuilder.append(name.toString().charAt(i));
+        }
+
+        System.out.println(reverseBuilder.toString());
+    }
+
+    /**
+     * Validates the date of birth to ensure it is not null.
+     *
+     * @param dateOfBirth the date of birth to validate
+     * @throws IllegalArgumentException if dateOfBirth is null
+     */
+    private static void validateDateOfBirth(final Date dateOfBirth) {
         if (dateOfBirth == null) {
             throw new IllegalArgumentException("Date of birth cannot be null");
         }
     }
 
-    // Marcus:
-    // - Follow the naming conventions for methods. Use lowercaseCamelCase
-    private static void validatename(String name){
+    /**
+     * Validates the name to ensure it is not null.
+     *
+     * @param name the name to validate
+     * @throws IllegalArgumentException if name is null
+     */
+    private static void validateName(final Name name) {
         if (name == null) {
             throw new IllegalArgumentException("Name cannot be null");
         }

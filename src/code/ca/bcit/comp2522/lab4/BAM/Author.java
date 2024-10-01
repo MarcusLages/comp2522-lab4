@@ -1,63 +1,77 @@
 package ca.bcit.comp2522.lab4.BAM;
 
-public class Author extends Person implements Printable{
+/**
+ * Represents an author with a name, date of birth, date of death, and a literary genre.
+ * Extends the Person class and implements Printable for display functionality.
+ *
+ * @author Ben, Andre, Marcus
+ * @version 1.0
+ */
+public class Author extends Person implements Printable {
     private static final int MAX_GENRE_LENGTH = 30;
 
     public final String genre;
 
-    public Author(final Date dateOfBirth, final Date dateOfDeath, final String name, final String genre) {
+    /**
+     * Constructs an Author object with the specified date of birth, date of death, name, and genre.
+     *
+     * @param dateOfBirth the date of birth of the author
+     * @param dateOfDeath the date of death of the author
+     * @param name the name of the author
+     * @param genre the literary genre of the author
+     * @throws IllegalArgumentException if genre is null, empty, blank, or exceeds maximum length
+     */
+    public Author(final Date dateOfBirth, final Date dateOfDeath, final Name name, final String genre) {
         super(dateOfBirth, dateOfDeath, name);
+        validateGenre(genre);
         this.genre = genre;
-
-        // Marcus:
-        // Validate first, then you assign. Not the opposite.
-        validategenre(genre);
     }
 
-    public void display(){
+    /**
+     * Displays the details of the author including name, date of birth, date of death, and genre.
+     */
+    @Override
+    public void display() {
         final StringBuilder authorBuilder;
         final String authorBuilt;
-
         authorBuilder = new StringBuilder();
 
-        // Marcus:
-        // - You are getting the String value of the StringBuilder before
-        //   it's even built. This will return a blank space. Use the toString
-        //   after you have built the whole String.
-        authorBuilt = authorBuilder.toString();
+        authorBuilder.append("Name: ")
+                .append(name)
+                .append("\nDate of birth: ")
+                .append(dateOfBirth)
+                .append("\nDate of death: ")
+                .append(dateOfDeath)
+                .append("\nGenre: ")
+                .append(genre)
+                .append("\n");
 
-        // Marcus:
-        // Use append or +, not both (preferably append).
-        authorBuilder.append("Name: " + name +
-                "\nDate of Birth: " + dateOfBirth +
-                "\nDate of Death: " + dateOfDeath + "\n");
+        authorBuilt = authorBuilder.toString();
 
         System.out.println(authorBuilt);
     }
 
-
-
-    public static void validategenre(final String genre){
-        if(genre == null){
+    /**
+     * Validates the genre to ensure it is not null, empty, blank, or too long.
+     *
+     * @param genre the genre to validate
+     * @throws IllegalArgumentException if genre is null, empty, blank, or exceeds maximum length
+     */
+    public static void validateGenre(final String genre) {
+        if (genre == null) {
             throw new IllegalArgumentException("Genre cannot be null.");
         }
 
-        // Marcus:
-        // - This is okay, but you can prob join isEmpty || isBlank if you want
-        if(genre.isEmpty()){
+        if (genre.isEmpty()) {
             throw new IllegalArgumentException("Genre cannot be empty.");
         }
 
-        if(genre.isBlank()){
+        if (genre.isBlank()) {
             throw new IllegalArgumentException("Genre cannot be blank.");
         }
 
-        // Marcus:
-        // - It would be good to display the name of the genre that was given,
-        //   so you can debug it easier.
-        if (genre.length() > MAX_GENRE_LENGTH){
-            throw new IllegalArgumentException("Genre name is too long");
+        if (genre.length() > MAX_GENRE_LENGTH) {
+            throw new IllegalArgumentException("Genre name is too long.");
         }
-
     }
 }

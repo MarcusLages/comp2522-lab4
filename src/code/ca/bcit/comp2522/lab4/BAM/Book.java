@@ -61,6 +61,9 @@ public class Book
     /**
      * Displays information about the name of the book backwards (reversed).
      */
+
+    //Andre Dizon:
+    //MAGIC NUMBER ┌∩┐(◣_◢)┌∩┐
     @Override
     public void backward() {
         final StringBuilder reverseBuilder;
