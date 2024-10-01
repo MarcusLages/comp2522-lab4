@@ -15,6 +15,7 @@ public class Book
     private static final int FIRST_YEAR = 1;
     private static final int CURRENT_YEAR = 2024;
     private static final int STRING_BEGINNING = 0;
+    private static final int ACCESS_FINAL_CHAR = 1;
 
     private final String title;
     private final int yearPublished;
@@ -68,7 +69,7 @@ public class Book
         final String reverse;
 
         reverseBuilder = new StringBuilder();
-        for (int i = STRING_BEGINNING; i < title.length(); i++) {
+        for (int i = title.length() - ACCESS_FINAL_CHAR; i >= STRING_BEGINNING; i--) {
             reverseBuilder.append(title.charAt(i));
         }
 
