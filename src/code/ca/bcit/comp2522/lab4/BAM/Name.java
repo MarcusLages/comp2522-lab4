@@ -15,10 +15,12 @@ public class Name implements Printable {
         this.last = last;
     }
     public String getFirst() {
+
         return first;
     }
 
     public String getLast() {
+
         return last;
     }
     private static void firstValidation(final String first){
@@ -35,7 +37,7 @@ public class Name implements Printable {
 
     @Override
     public void display() {
-        StringBuilder str;
+        final StringBuilder str;
 
         str = new StringBuilder();
         str.append("First name: ")
@@ -46,4 +48,16 @@ public class Name implements Printable {
         System.out.print(str.toString());
 
     }
+
+    @Override
+    public String toString(){
+        final StringBuilder nameString;
+        nameString = new StringBuilder();
+        nameString.append("First name: ")
+                .append(first)
+                .append(", Last name: ")
+                .append(last);
+        return nameString.toString();
+    }
+
 }

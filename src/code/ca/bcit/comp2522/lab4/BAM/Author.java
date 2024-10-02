@@ -37,11 +37,11 @@ public class Author extends Person implements Printable {
         authorBuilder = new StringBuilder();
 
         authorBuilder.append("Name: ")
-                .append(name)
+                .append(getName())
                 .append("\nDate of birth: ")
-                .append(dateOfBirth)
+                .append(getDateOfBirth())
                 .append("\nDate of death: ")
-                .append(dateOfDeath)
+                .append(getDateOfDeath())
                 .append("\nGenre: ")
                 .append(genre)
                 .append("\n");
