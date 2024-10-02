@@ -11,9 +11,9 @@ package ca.bcit.comp2522.lab4.BAM;
 public class Person implements Comparable<Person>, Printable, Reversible {
     private static final int MIN_LENGTH = 0;
 
-    public final Date dateOfBirth;
-    public final Date dateOfDeath;
-    public final Name name;
+    private final Date dateOfBirth;
+    private final Date dateOfDeath;
+    private final Name name;
 
     /**
      * Constructs a Person object with the specified date of birth, date of death, and name.
@@ -31,6 +31,19 @@ public class Person implements Comparable<Person>, Printable, Reversible {
         this.dateOfBirth = dateOfBirth;
         this.dateOfDeath = dateOfDeath;
     }
+
+    public Name getName(){
+        return name;
+    }
+
+    public Date getDateOfBirth(){
+        return dateOfBirth;
+    }
+
+    public Date getDateOfDeath(){
+        return dateOfDeath;
+    }
+
 
     /**
      * Compares this person with another person based on their date of birth.
@@ -62,7 +75,8 @@ public class Person implements Comparable<Person>, Printable, Reversible {
      */
     @Override
     public void display() {
-        final StringBuilder personBuilder = new StringBuilder();
+        final StringBuilder personBuilder;
+        personBuilder = new StringBuilder();
 
         personBuilder.append("Name: ")
                 .append(this.name)
@@ -86,7 +100,7 @@ public class Person implements Comparable<Person>, Printable, Reversible {
             reverseBuilder.append(name.toString().charAt(i));
         }
 
-        System.out.println(reverseBuilder.toString());
+        System.out.println(reverseBuilder);
     }
 
     /**
