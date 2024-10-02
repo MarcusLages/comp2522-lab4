@@ -13,7 +13,11 @@ import java.util.Objects;
  */
 public class Biography extends Book {
 
-    public final Person subject;
+    public Person getSubject() {
+        return subject;
+    }
+
+    private final Person subject;
 
     /**
      * Creates a Biography object based on the given information.
@@ -44,7 +48,7 @@ public class Biography extends Book {
 
         infoBuilder = new StringBuilder();
         infoBuilder.append("Subject: ")
-                .append(subject.getName());
+                .append(getSubject().getName());
         info = infoBuilder.toString();
 
         super.display();
