@@ -23,7 +23,9 @@ public class Person implements Comparable<Person>, Printable, Reversible {
      * @param name the name of the person
      * @throws IllegalArgumentException if dateOfBirth or name is null
      */
-    public Person(final Date dateOfBirth, final Date dateOfDeath, final Name name) {
+    public Person(final Date dateOfBirth,
+                  final Date dateOfDeath,
+                  final Name name) {
         validateDateOfBirth(dateOfBirth);
         validateName(name);
 
@@ -94,7 +96,8 @@ public class Person implements Comparable<Person>, Printable, Reversible {
      */
     @Override
     public void backward() {
-        final StringBuilder reverseBuilder = new StringBuilder();
+        final StringBuilder reverseBuilder;
+        reverseBuilder = new StringBuilder();
 
         for (int i = MIN_LENGTH; i < name.toString().length(); i++) {
             reverseBuilder.append(name.toString().charAt(i));

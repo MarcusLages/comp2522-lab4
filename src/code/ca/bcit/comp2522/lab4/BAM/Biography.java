@@ -6,16 +6,11 @@ import java.util.Objects;
  * Class represents a Biography and its information (title, year
  * published, author and subject).
  *
- * @Implements Comparable, Printable, Reversible
  *
  * @author Ben, Andre, Marcus
  * @version 1.0
  */
 public class Biography extends Book {
-
-    public Person getSubject() {
-        return subject;
-    }
 
     private final Person subject;
 
@@ -35,6 +30,10 @@ public class Biography extends Book {
         validateSubject(subject);
 
         this.subject = subject;
+    }
+
+    public Person getSubject() {
+        return subject;
     }
 
     /**

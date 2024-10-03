@@ -23,17 +23,6 @@ public class Name implements Printable {
 
         return last;
     }
-    private static void firstValidation(final String first){
-        if (first == null || first.isBlank()|| first.length() > MAX_NAME_LENGTH){
-            throw new IllegalArgumentException("First name does not meet the requirements");
-        }
-
-    }
-    private static void lastValidation(final String last){
-        if (last == null || last.isBlank()|| last.length() > MAX_NAME_LENGTH){
-            throw new IllegalArgumentException("Last name does not meet the requirements");
-        }
-    }
 
     @Override
     public void display() {
@@ -53,11 +42,22 @@ public class Name implements Printable {
     public String toString(){
         final StringBuilder nameString;
         nameString = new StringBuilder();
-        nameString.append("First name: ")
-                .append(first)
-                .append(", Last name: ")
+        nameString.append(first)
+                .append(" ")
                 .append(last);
         return nameString.toString();
+    }
+
+    private static void firstValidation(final String first){
+        if (first == null || first.isBlank()|| first.length() > MAX_NAME_LENGTH){
+            throw new IllegalArgumentException("First name does not meet the requirements");
+        }
+
+    }
+    private static void lastValidation(final String last){
+        if (last == null || last.isBlank()|| last.length() > MAX_NAME_LENGTH){
+            throw new IllegalArgumentException("Last name does not meet the requirements");
+        }
     }
 
 }

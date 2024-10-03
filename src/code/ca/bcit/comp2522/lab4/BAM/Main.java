@@ -1,9 +1,6 @@
 package ca.bcit.comp2522.lab4.BAM;
 
-public class  add .
-Main {
-    // Marcus:
-    // - Once again, NO FINAL
+public class Main {
     public static void main(final String[] args) {
 
         final Author orwell;
@@ -60,6 +57,8 @@ Main {
         final Autobiography auto4;
         final Autobiography auto5;
 
+        final int MIN_COMPARE = 0;
+
         Nameorwell = new Name("George", "Orwell");
         Namelee = new Name("Harper", "Lee");
         Nameausten = new Name("Jane", "Austen");
@@ -114,29 +113,53 @@ Main {
         auto4 = new Autobiography("I Know Why the Caged Bird Sings", 1969, Angelou);
         auto5 = new Autobiography("Autobiography of Malcolm X", 1965, X);
 
-
-        // Comparisons and Printing n shit
-        // Compare books by publication year
-        System.out.println(book1.compareTo(book2));
-        System.out.println(book3.compareTo(book4));
-
-        // Compare authors by birthdate
-        System.out.println(orwell.compareTo(lee));
-        System.out.println(austen.compareTo(melville));
-
-        // Compare biographies by subjects
-        System.out.println(bio1.equals(bio2));
-        System.out.println(bio4.equals(bio5));
-
         // Use Printable interface to display information
         book1.display();
         bio1.display();
         auto1.display();
 
         // Use Reversible interface to print names and titles backward
+        System.out.println(" ");
         book1.backward();
         bio1.backward();
         auto1.backward();
 
+        // Test comparisons for books
+        book1.display();
+        System.out.println("\nBook Publication Year Comparison Test:");
+        if (book1.compareTo(book2) < MIN_COMPARE) {
+            System.out.println("INCORRECT: " + book1.getTitle() + "(" + book1.getYearPublished() + ") was published before " +
+                    book2.getTitle() + "(" +book2.getYearPublished() + ")");
+        } else {
+            System.out.println("CORRECT: " + book1.getTitle() + "(" + book1.getYearPublished() + ") is published before " +
+                    book2.getTitle() + "(" +book2.getYearPublished() + ")");
+        }
+        if (book3.compareTo(book4) < MIN_COMPARE) {
+            System.out.println("INCORRECT: " + book3.getTitle() + "(" + book3.getYearPublished()  + ") was published before " +
+                    book4.getTitle() + "(" +book4.getYearPublished() + ")");
+        } else {
+            System.out.println("CORRECT: " + book4.getTitle() + "(" + book4.getYearPublished() + ") is published AFTER " +
+                    book3.getTitle() + "(" +book3.getYearPublished() + ")");
+        }
+        // Test comparisons for authors
+        System.out.println("\nAuthor Birth Year Comparison Test:");
+        if (orwell.compareTo(lee) < MIN_COMPARE) {
+            System.out.println("CORRECT: " + orwell.getName() + " was born before " + lee.getName());
+        } else {
+            System.out.println("INCORRECT: " + orwell.getName() + " should be born before " + lee.getName());
+        }
+        if (austen.compareTo(melville) < MIN_COMPARE) {
+            System.out.println("CORRECT: " + austen.getName() + " was born before " + melville.getName());
+        } else {
+            System.out.println("INCORRECT: " + austen.getName() + " should be born before " + melville.getName());
+        }
+
+        // Test equality for biographies
+        System.out.println("\nBiography Equality Test:");
+        if (bio1.equals(bio2)) {
+            System.out.println("INCORRECT: " + bio1.getSubject().getName() + " is equal to " + bio2.getSubject().getName());
+        } else {
+            System.out.println("CORRECT: " + bio1.getSubject().getName() + " is not equal to " + bio2.getSubject().getName());
+        }
     }
 }

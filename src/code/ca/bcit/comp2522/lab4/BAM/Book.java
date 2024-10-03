@@ -18,6 +18,7 @@ public class Book
     private static final int ACCESS_FINAL_CHAR = 1;
 
     private final String title;
+
     private final int yearPublished;
     private final Author author;
 
@@ -38,6 +39,14 @@ public class Book
         this.author = author;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public int getYearPublished() {
+        return yearPublished;
+    }
+
     /**
      * Displays information about the book on the console
      * (title, year published and author).
@@ -48,7 +57,7 @@ public class Book
         final String info;
 
         infoBuilder = new StringBuilder();
-        infoBuilder.append("Title: ")
+        infoBuilder.append("\nTitle: ")
                 .append(title)
                 .append("\nYear Published: ")
                 .append(yearPublished)
@@ -118,7 +127,7 @@ public class Book
         }
     }
 
-    // Validates author to be not be null
+    // Validates author to not be null
     private static void validateAuthor(final Author author) {
         if (author == null) {
             throw new IllegalArgumentException("Null author not accepted.");

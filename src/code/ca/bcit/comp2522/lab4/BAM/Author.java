@@ -10,7 +10,7 @@ package ca.bcit.comp2522.lab4.BAM;
 public class Author extends Person implements Printable {
     private static final int MAX_GENRE_LENGTH = 30;
 
-    public final String genre;
+    private final String genre;
 
     /**
      * Constructs an Author object with the specified date of birth, date of death, name, and genre.
@@ -73,5 +73,9 @@ public class Author extends Person implements Printable {
         if (genre.length() > MAX_GENRE_LENGTH) {
             throw new IllegalArgumentException("Genre name is too long.");
         }
+    }
+    @Override
+    public String toString(){
+        return getName().getFirst();
     }
 }
