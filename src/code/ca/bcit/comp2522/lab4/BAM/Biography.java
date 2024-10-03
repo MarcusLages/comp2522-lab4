@@ -92,7 +92,7 @@ public class Biography extends Book {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(subject.name.getFirst(), subject.name.getLast());
+        return Objects.hash(subject.getName().getFirst(), subject.getName().getLast());
     }
 
     // Validates the subject to not be null

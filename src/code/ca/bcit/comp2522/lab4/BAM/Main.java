@@ -1,6 +1,7 @@
 package ca.bcit.comp2522.lab4.BAM;
 
-public class Main {
+public class  add .
+Main {
     // Marcus:
     // - Once again, NO FINAL
     public static void main(final String[] args) {
